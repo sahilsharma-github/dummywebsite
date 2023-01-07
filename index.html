@@ -1,85 +1,31 @@
-<html>
-  <head>
-    <title>Love at First Swipe</title>
-    <style>
-	form {
-  <!--transform: translate(-50%, -50%);-->
-   <!--opacity: 0.5;-->
-  background-color: rgba(245, 245, 245, 0.7);
-  position: absolute;
-  bottom: 1px;
-  left: 50px;
-  width: 400px;
-  height: 220px;
-}
-      body {
-        font-family: Arial, sans-serif;
-        background-image: url("https://cdn.discordapp.com/attachments/1008571134461083759/1061036057988190308/SahilSays_4k_add_flirting_drinks_romantic_background_c126f1cf-77d7-44e4-9778-9884a889211b.png");
-        background-size: cover;
-		background-position: center;
-		background-attachment: fixed;
-      }
-      h1 {
-        text-align: center;
-        color: #ff4d4d;
-      }
-      p {
-        font-size: 16px;
-        line-height: 1.5;
-		color: white;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-		color: white;
-      }
-      li {
-        margin: 10px 0;
-      }
-      
-      label {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-      input[type="text"] {
-        padding: 12px 20px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      input[type="submit"] {
-        background-color: #ff4d4d;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      input[type="submit"]:hover {
-        background-color: #ff8787;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Love at First Swipe</h1>
-    <p>Welcome to Love at First Swipe, the premier speed dating service in [City]. We bring eligible singles together in a fun and low-pressure environment, making it easy to meet new people and potentially find love.</p>
-    <p>Our speed dating events are held at stylish venues and feature a variety of themes, including:</p>
-    <ul>
-      <li>Professional mixers</li>
-      <li>Fun and unique themes (e.g. Harry Potter, game nights, etc.)</li>
-      <li>LGBTQ+ events</li>
-      <li>Religious and cultural events</li>
-    </ul>
-    <p>We believe that everyone deserves the opportunity to find love, and our events are open to all singles. Whether you're new to the dating scene or have been swiping for years, we have an event for you.</p>
-    <p>Join us at our next event and see if you can find love at first swipe!</p>
-    <form>
-      <label for="email">Email:</label><br>
-      <input type="text" id="email" name="email"><br>
-      <label for="instagram">Instagram ID:</label><br>
-      <input type="text" id="instagram" name="instagram"><br><br>
-      <input type="submit" value="Sign up">
-	  
-    </form>
-	<!--<iframe src="https://forms.gle/kWnyyxibCNogdHfn9" width="640" height="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> -->
-  </body>
-</html>
+# Import the necessary modules
+from cgi import FieldStorage
+import csv
+
+
+# Create a FieldStorage object to hold the form data
+form_data = FieldStorage()
+
+# Get the form data
+insta = form_data.getvalue("instagram")
+email = form_data.getvalue("email")
+
+# Open a file for writing
+with open("form_data.csv", "a") as f:
+  # Create a CSV writer
+  writer = csv.writer(f)
+  # Write the form data to the file
+  writer.writerow([insta, email])
+
+print "Content-type:text/html\r\n\r\n"
+print "<html>"
+print "<head>"
+print "<title>Redirecting...</title>"
+print "</head>"
+print "<body>"
+
+# Redirect to a new page after processing the form
+print "<meta http-equiv='refresh' content='0;url=http://127.0.0.1:8080/LandingPage.html'>"
+
+print "</body>"
+print "</html>"
